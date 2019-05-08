@@ -84,7 +84,7 @@ public class TextFieldEventDemo
   public void actionPerformed(ActionEvent paramActionEvent)
   {
     if (paramActionEvent.getSource().equals(this.textfield)) {
-      System.out.println("©ó¤å¦rÄæ¦ì¤W«ö¤UENTERÁä");
+      System.out.println("æ–¼æ–‡å­—æ¬„ä½ä¸ŠæŒ‰ä¸‹ENTERéµ");
     }
   }
   
@@ -102,44 +102,44 @@ public class TextFieldEventDemo
   
   public void mouseClicked(MouseEvent paramMouseEvent)
   {
-    System.out.println("«ö¤U¨ÃÄÀ©ñ·Æ¹««öÁä: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+    System.out.println("æŒ‰ä¸‹ä¸¦é‡‹æ”¾æ»‘é¼ æŒ‰éµ: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
   
   public void mouseEntered(MouseEvent paramMouseEvent)
   {
-    System.out.println("·Æ¹«²¾¸mª«¥ó¤W¤è  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+    System.out.println("æ»‘é¼ ç§»ç½®ç‰©ä»¶ä¸Šæ–¹  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
   
   public void mouseExited(MouseEvent paramMouseEvent)
   {
-  System.out.println("·Æ¹«Â÷¶}ª«¥ó +X"+ paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  System.out.println("æ»‘é¼ é›¢é–‹ç‰©ä»¶ +X"+ paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
     
   
 public void mousePressed(MouseEvent paramMouseEvent)
   {
-    System.out.println("«ö¤U·Æ¹««öÁä: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+    System.out.println("æŒ‰ä¸‹æ»‘é¼ æŒ‰éµ: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
   
   public void mouseReleased(MouseEvent paramMouseEvent)
   {
-    System.out.println("ÄÀ©ñ·Æ¹««öÁä  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+    System.out.println("é‡‹æ”¾æ»‘é¼ æŒ‰éµ  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
   
   public void mouseDragged(MouseEvent paramMouseEvent)
   {
-    System.out.println("«ö¤U·Æ¹««öÁä¨Ã©ì¦²·Æ¹«  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+    System.out.println("æŒ‰ä¸‹æ»‘é¼ æŒ‰éµä¸¦æ‹–æ›³æ»‘é¼   X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
   }
   
   public void mouseMoved(MouseEvent paramMouseEvent)
   {
-    System.out.println("¦bª«¥ó¤W²¾°Ê·Æ¹«  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY() + ", ID: " + paramMouseEvent.getID());
+    System.out.println("åœ¨ç‰©ä»¶ä¸Šç§»å‹•æ»‘é¼   X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY() + ", ID: " + paramMouseEvent.getID());
   }
   
   public void textValueChanged(TextEvent paramTextEvent)
   {
     if (paramTextEvent.getID() == 900) {
-      System.out.println("¤å¦rÄæ¦ì¤º®e§ïÅÜ");
+      System.out.println("æ–‡å­—æ¬„ä½å…§å®¹æ”¹è®Š");
     }
   }
 }

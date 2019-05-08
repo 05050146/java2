@@ -1,0 +1,145 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.TextField;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.PrintStream;
+
+public class TextFieldEventDemo
+  extends Frame
+  implements ActionListener, KeyListener, MouseListener, MouseMotionListener, TextListener
+{
+  TextField textfield;
+  
+  public static void main(String[] paramArrayOfString)
+  {
+    new TextFieldEventDemo();
+  }
+  
+  public TextFieldEventDemo()
+  {
+    super("TextField Event Demo");
+    
+    setLayout(new FlowLayout());
+    
+    this.textfield = new TextField();
+    
+    this.textfield.setText("TextField 1");
+    
+    this.textfield.setColumns(10);
+    
+    this.textfield.setBackground(Color.PINK);
+    
+    this.textfield.setForeground(Color.CYAN);
+    
+    this.textfield.selectAll();
+    
+    this.textfield.addActionListener(this);
+    
+    this.textfield.addKeyListener(this);
+    
+    this.textfield.addMouseListener(this);
+    
+    this.textfield.addMouseMotionListener(this);
+    
+    this.textfield.addTextListener(this);
+    
+    add(this.textfield);
+    
+    setSize(200, 100);
+    
+    Dimension localDimension1 = Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension localDimension2 = getSize();
+    if (localDimension2.height > localDimension1.height) {
+      localDimension2.height = localDimension1.height;
+    }
+    if (localDimension2.width > localDimension1.width) {
+      localDimension2.width = localDimension1.width;
+    }
+    setLocation((localDimension1.width - localDimension2.width) / 2, (localDimension1.height - localDimension2.height) / 2);
+    
+    setVisible(true);
+    
+    addWindowListener(new WindowAdapter()
+    {
+      public void windowClosing(WindowEvent paramAnonymousWindowEvent)
+      {
+        System.exit(0);
+      }
+    });
+  }
+  
+  public void actionPerformed(ActionEvent paramActionEvent)
+  {
+    if (paramActionEvent.getSource().equals(this.textfield)) {
+      System.out.println("於文字欄位上按下ENTER鍵");
+    }
+  }
+  
+  public void keyPressed(KeyEvent paramKeyEvent)
+  {
+    System.out.println("Key Pressed: " + paramKeyEvent.getKeyCode());
+  }
+  
+  public void keyReleased(KeyEvent paramKeyEvent)
+  {
+    System.out.println("Char: " + paramKeyEvent.getKeyChar());
+  }
+  
+  public void keyTyped(KeyEvent paramKeyEvent) {}
+  
+  public void mouseClicked(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下並釋放滑鼠按鍵: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseEntered(MouseEvent paramMouseEvent)
+  {
+    System.out.println("滑鼠移置物件上方  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseExited(MouseEvent paramMouseEvent)
+  {
+  System.out.println("滑鼠離開物件 +X"+ paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+    
+  
+public void mousePressed(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下滑鼠按鍵: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseReleased(MouseEvent paramMouseEvent)
+  {
+    System.out.println("釋放滑鼠按鍵  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseDragged(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下滑鼠按鍵並拖曳滑鼠  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseMoved(MouseEvent paramMouseEvent)
+  {
+    System.out.println("在物件上移動滑鼠  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY() + ", ID: " + paramMouseEvent.getID());
+  }
+  
+  public void textValueChanged(TextEvent paramTextEvent)
+  {
+    if (paramTextEvent.getID() == 900) {
+      System.out.println("文字欄位內容改變");
+    }
+  }
+}

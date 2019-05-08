@@ -1,0 +1,127 @@
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.PrintStream;
+
+public class TextAreaEventDemo
+  extends Frame
+  implements KeyListener, MouseListener, MouseMotionListener, TextListener
+{
+  TextArea textarea;
+  
+  public static void main(String[] paramArrayOfString)
+  {
+    new TextAreaEventDemo();
+  }
+  
+  public TextAreaEventDemo()
+  {
+    super("TextArea Event Demo");
+    
+    this.textarea = new TextArea();
+    
+    this.textarea.setText("TextArea Event Demo");
+    
+    this.textarea.setRows(10);
+    
+    this.textarea.setColumns(30);
+    
+    this.textarea.addKeyListener(this);
+    
+    this.textarea.addMouseListener(this);
+    
+    this.textarea.addMouseMotionListener(this);
+    
+    this.textarea.addTextListener(this);
+    
+    Panel localPanel = new Panel();
+    localPanel.add(this.textarea);
+    add(localPanel);
+    
+    setSize(250, 220);
+    
+    Dimension localDimension1 = Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension localDimension2 = getSize();
+    if (localDimension2.height > localDimension1.height) {
+      localDimension2.height = localDimension1.height;
+    }
+    if (localDimension2.width > localDimension1.width) {
+      localDimension2.width = localDimension1.width;
+    }
+    setLocation((localDimension1.width - localDimension2.width) / 2, (localDimension1.height - localDimension2.height) / 2);
+    
+    setVisible(true);
+    
+    addWindowListener(new WindowAdapter()
+    {
+      public void windowClosing(WindowEvent paramAnonymousWindowEvent)
+      {
+        System.exit(0);
+      }
+    });
+  }
+  
+  public void keyPressed(KeyEvent paramKeyEvent)
+  {
+    System.out.println("Key Pressed: " + paramKeyEvent.getKeyCode());
+  }
+  
+  public void keyReleased(KeyEvent paramKeyEvent)
+  {
+    System.out.println("Char: " + paramKeyEvent.getKeyChar());
+  }
+  
+  public void keyTyped(KeyEvent paramKeyEvent) {}
+  
+  public void mouseClicked(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下並釋放滑鼠按鍵: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseEntered(MouseEvent paramMouseEvent)
+  {
+    System.out.println("滑鼠移置物件上方  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+ public void mouseExited(MouseEvent paramMouseEvent)
+  {
+    System.out.println("滑鼠離開物件 X:"+ paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  public void mousePressed(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下滑鼠按鍵: " + paramMouseEvent.getButton() + "  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseReleased(MouseEvent paramMouseEvent)
+  {
+    System.out.println("是放滑鼠按鍵  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseDragged(MouseEvent paramMouseEvent)
+  {
+    System.out.println("按下滑鼠按鍵並拖曳滑鼠  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY());
+  }
+  
+  public void mouseMoved(MouseEvent paramMouseEvent)
+  {
+    System.out.println("在物件上方移動滑鼠  X: " + paramMouseEvent.getX() + ", Y: " + paramMouseEvent.getY() + ", ID: " + paramMouseEvent.getID());
+  }
+  
+  public void textValueChanged(TextEvent paramTextEvent)
+  {
+    if (paramTextEvent.getID() == 900) {
+      System.out.println("文字區域內容改變");
+    }
+  }
+}

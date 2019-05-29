@@ -1,0 +1,152 @@
+import java.awt.Dimension;
+import javax.swing.ButtonGroup;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JRadioButtonMenuItem;
+
+public class LookandFeelDemo extends javax.swing.JFrame implements java.awt.event.ActionListener
+{
+  JRadioButtonMenuItem[] jrbmenuitem = new JRadioButtonMenuItem[6];
+  
+  String[] item = { "Metal", "CDE/Motif", "Windows XP", "Windows Classic", "GTK+", "Mac" };
+  
+  String[] classname = { "javax.swing.plaf.metal.MetalLookAndFeel", "com.sun.java.swing.plaf.motif.MotifLookAndFeel", "com.sun.java.swing.plaf.windows.WindowsLookAndFeel", "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel", "com.sun.java.swing.plaf.gtk.GTKLookAndFeel", "com.sun.java.swing.plaf.mac.MacLookAndFeel" };
+  
+
+
+
+
+
+
+  public static void main(String[] paramArrayOfString)
+  {
+    try
+    {
+      javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+    }
+    catch (Exception localException) {
+      localException.printStackTrace();
+    }
+    
+    new LookandFeelDemo();
+  }
+  
+
+  public LookandFeelDemo()
+  {
+    super("Look and Feel Demo");
+    
+
+    JMenuBar localJMenuBar = createJMenuBar();
+    
+
+    setJMenuBar(localJMenuBar);
+    
+
+    setSize(200, 200);
+    setDefaultCloseOperation(3);
+    setResizable(true);
+    
+
+    Dimension localDimension1 = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension localDimension2 = getSize();
+    
+    if (height > height) {
+      height = height;
+    }
+    if (width > width) {
+      width = width;
+    }
+    setLocation((width - width) / 2, (height - height) / 2);
+    
+
+    setVisible(true);
+    
+    addWindowListener(new LookandFeelDemo.1(this));
+  }
+  
+
+
+
+
+  private JMenuBar createJMenuBar()
+  {
+    JMenuBar localJMenuBar = new JMenuBar();
+    
+
+    JMenu localJMenu1 = new JMenu("File");
+    
+
+    javax.swing.JMenuItem localJMenuItem = new javax.swing.JMenuItem("Exit");
+    
+    localJMenuItem.addActionListener(new LookandFeelDemo.2(this));
+    
+
+
+
+
+
+
+
+
+    localJMenu1.add(localJMenuItem);
+    
+
+    JMenu localJMenu2 = new JMenu("L & F");
+    
+
+    ButtonGroup localButtonGroup = new ButtonGroup();
+    
+    for (int i = 0; i < item.length; i++)
+    {
+      jrbmenuitem[i] = new JRadioButtonMenuItem(item[i]);
+      
+
+      jrbmenuitem[i].setEnabled(isLookAndFeelSupported(classname[i]));
+      
+      localJMenu2.add(jrbmenuitem[i]);
+      localButtonGroup.add(jrbmenuitem[i]);
+      
+
+      jrbmenuitem[i].addActionListener(this);
+      
+      if (i == 0) {
+        jrbmenuitem[i].setSelected(true);
+      }
+    }
+    
+    localJMenuBar.add(localJMenu1);
+    localJMenuBar.add(localJMenu2);
+    
+    return localJMenuBar;
+  }
+  
+  private boolean isLookAndFeelSupported(String paramString) {
+    try {
+      Class localClass = Class.forName(paramString);
+      javax.swing.LookAndFeel localLookAndFeel = (javax.swing.LookAndFeel)localClass.newInstance();
+      
+
+      return localLookAndFeel.isSupportedLookAndFeel();
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public void actionPerformed(java.awt.event.ActionEvent paramActionEvent)
+  {
+    try {
+      for (int i = 0; i < item.length; i++) {
+        if (paramActionEvent.getActionCommand().equals(item[i]))
+        {
+          javax.swing.UIManager.setLookAndFeel(classname[i]);
+        }
+      }
+    }
+    catch (Exception localException) {}
+    
+
+    javax.swing.SwingUtilities.updateComponentTreeUI(this);
+  }
+}
+
